@@ -126,29 +126,84 @@ void sort_2( string str )	//	Conclude the number of if_else and if_elseif_else w
 	}
 }
 
+//int main()     // This part just outputs all.
+//{
+//	string file,temp;
+//	cout << "Enter the file path£º" << endl;
+//	cin >> file;
+//	ifstream File( file.c_str() );
+//	int Corrrespond( string a, string b );
+//	int correspond( char str);
+//	void sort_1( string str );	//	Correspond with the keyword, and conclude the number of switch and case.
+//	void sort_2( string str );	//	Conclude the number of if_else and if_elseif_else with thw way of nest.
+//	while ( getline( File ,temp ))	// Read line by line. 
+//	{
+//		istringstream istr ( temp );
+//		string str;
+//		sort_2( temp );	//	Blank in the nest of if_else. 
+//		while( istr >> str ) 
+//		{
+//			sort_1( str );
+//		}
+//	}
+//	cout << "total num: " << total_num << endl;
+//	cout << "switch num: " << switch_num << endl;
+//	if( !Case_num.empty() )
+//		{
+//			Case_num.push_back(case_num);
+//		}
+//		else
+//		{
+//			Case_num.push_back(0);
+//		}
+//		cout << "case_num: ";
+//		for ( int i = 1; i <= switch_num; i++)
+//		{
+//			cout<< Case_num[i] << " ";
+//		}
+//		cout << endl;
+//	cout << "if-else num: " << ifelse_num << endl;
+//	cout << "if-elseif-else num: " <<if_elseif_else_num << endl;
+//}
+
 int main()
 {
+	int level;
 	string file,temp;
 	cout << "Enter the file path£º" << endl;
 	cin >> file;
+	cout << "Enter the completion level£º" << endl;
+	cout << "1--Total num" << endl;
+	cout << "2--Switch-case num" << endl;
+	cout << "3--If_else num" << endl;
+	cout << "4--IF_elseif_Else num" << endl;
+	cin >> level;
 	ifstream File( file.c_str() );
-	int Corrrespond( string a, string b );
+	int correspond( string a,string b );
 	int correspond( char str);
-	void sort_1( string str );	//	Correspond with the keyword, and conclude the number of switch and case.
-	void sort_2( string str );	//	Conclude the number of if_else and if_elseif_else with thw way of nest.
+	void sort_1( string str );	//	Correspond with the keyword, and conclude the number of switch and case. 
+	void sort_2( string str );	//	Conclude the number of if_else and if_elseif_else with thw way of nest.	 
 	while ( getline( File ,temp ))	// Read line by line. 
 	{
 		istringstream istr ( temp );
 		string str;
-		sort_2( temp );	//	Blank in the nest of if_else. 
+		if( level >= 3)
+		{
+			sort_2( temp );	//	Blank in the nest of if_else.
+		}
 		while( istr >> str ) 
 		{
 			sort_1( str );
 		}
 	}
-	cout << "total num: " << total_num << endl;
-	cout << "switch num: " << switch_num << endl;
-	if( !Case_num.empty() )
+	if( level >= 1 ) 
+	{
+		cout << "total num: " << total_num << endl;
+	}
+	if( level >= 2 )
+	{
+		cout << "switch num: " << switch_num << endl;
+		if( !Case_num.empty() )
 		{
 			Case_num.push_back(case_num);
 		}
@@ -162,6 +217,13 @@ int main()
 			cout<< Case_num[i] << " ";
 		}
 		cout << endl;
-	cout << "if-else num: " << ifelse_num << endl;
-	cout << "if-elseif-else num: " <<if_elseif_else_num << endl;
+	}
+	if( level >=3 )
+	{
+		cout << "if-else num: " << ifelse_num << endl;
+	}
+	if( level >=4 )
+	{
+		cout << "if-elseif-else num: " <<if_elseif_else_num << endl;
+	}
 }
